@@ -1,0 +1,120 @@
+{
+  "scope": "10 authored browserless synthetic fixtures, no real-app validation or accuracy estimate",
+  "startedAt": "2026-10-15T23:26:44.267Z",
+  "node": "v24.20.0",
+  "platform": "win32",
+  "playwright": "1.64.1",
+  "passed": true,
+  "casesPassed": 10,
+  "casesTotal": 10,
+  "knownWitnessCases": 5,
+  "negativeControls": 5,
+  "falsePositives": 0,
+  "seconds": 275.6549918,
+  "command": "npm run test:synthetic -- artifacts/acceptance/first",
+  "cases": [
+    {
+      "id": "single",
+      "passed": true,
+      "status": "reduced",
+      "witness": [
+        "single-polluter"
+      ],
+      "deletionMinimal": true,
+      "probes": 34,
+      "seconds": 29.4321088
+    },
+    {
+      "id": "pair",
+      "passed": true,
+      "status": "reduced",
+      "witness": [
+        "pair-prepare",
+        "pair-polluter"
+      ],
+      "deletionMinimal": true,
+      "probes": 64,
+      "seconds": 60.822004199999995
+    },
+    {
+      "id": "cleaner",
+      "passed": true,
+      "status": "no-contrast",
+      "witness": [],
+      "deletionMinimal": false,
+      "probes": 6,
+      "seconds": 5.8196767
+    },
+    {
+      "id": "setter-dependent",
+      "passed": true,
+      "status": "reduced",
+      "witness": [
+        "setter-dependent-prepare",
+        "setter-dependent-polluter"
+      ],
+      "deletionMinimal": false,
+      "probes": 37,
+      "seconds": 41.4552463
+    },
+    {
+      "id": "cleaner-order",
+      "passed": true,
+      "status": "reduced",
+      "witness": [
+        "cleaner-order-final-polluter"
+      ],
+      "deletionMinimal": true,
+      "probes": 31,
+      "seconds": 31.7754334
+    },
+    {
+      "id": "independent",
+      "passed": true,
+      "status": "no-contrast",
+      "witness": [],
+      "deletionMinimal": false,
+      "probes": 6,
+      "seconds": 7.839819
+    },
+    {
+      "id": "prerequisite",
+      "passed": true,
+      "status": "no-contrast",
+      "witness": [],
+      "deletionMinimal": false,
+      "probes": 3,
+      "seconds": 3.4521819000000002
+    },
+    {
+      "id": "alternating",
+      "passed": true,
+      "status": "inconclusive",
+      "witness": [],
+      "deletionMinimal": false,
+      "probes": 3,
+      "seconds": 3.6152208
+    },
+    {
+      "id": "predecessor-failure",
+      "passed": true,
+      "status": "inconclusive",
+      "witness": [],
+      "deletionMinimal": false,
+      "probes": 6,
+      "seconds": 13.391112699999999
+    },
+    {
+      "id": "fingerprint",
+      "passed": true,
+      "status": "reduced",
+      "witness": [
+        "fingerprint-prepare",
+        "fingerprint-polluter"
+      ],
+      "deletionMinimal": false,
+      "probes": 37,
+      "seconds": 68.0475208
+    }
+  ]
+}
