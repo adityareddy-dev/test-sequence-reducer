@@ -1,0 +1,22 @@
+{
+  "command": [
+    "node",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=node_modules/test-sequence-reducer/playwright.config.mjs",
+    "single.spec.mjs"
+  ],
+  "reset": [
+    "node",
+    "node_modules/test-sequence-reducer/fixtures/reset.mjs"
+  ],
+  "tests": [
+    "single-noise-a",
+    "single-polluter",
+    "single-noise-b",
+    "single-noise-c"
+  ],
+  "target": "single-target",
+  "failure": "SINGLE_POLLUTION",
+  "output": "artifacts/example"
+}

@@ -1,15 +1,47 @@
 {
   "name": "test-sequence-reducer",
-  "version": "0.0.1",
-  "private": true,
+  "version": "0.1.0",
   "description": "Reduce a stable Playwright suite-only failure to an ordered witness",
   "type": "module",
   "license": "MIT",
-  "engines": { "node": ">=22" },
-  "bin": { "test-sequence-reducer": "src/cli.mjs" },
+  "engines": {
+    "node": ">=22"
+  },
+  "bin": {
+    "test-sequence-reducer": "src/cli.mjs"
+  },
   "scripts": {
     "test": "node --test test/*.test.mjs",
     "test:synthetic": "node scripts/acceptance.mjs"
   },
-  "devDependencies": { "@playwright/test": "1.64.1" }
+  "devDependencies": {
+    "@playwright/test": "1.64.1"
+  },
+  "author": "Aditya Reddy",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adityareddy-dev/test-sequence-reducer.git"
+  },
+  "homepage": "https://github.com/adityareddy-dev/test-sequence-reducer#readme",
+  "bugs": {
+    "url": "https://github.com/adityareddy-dev/test-sequence-reducer/issues"
+  },
+  "keywords": [
+    "playwright",
+    "testing",
+    "delta-debugging",
+    "order-dependent",
+    "test-isolation"
+  ],
+  "files": [
+    "src/",
+    "fixtures/",
+    "examples/",
+    "playwright.config.mjs",
+    "docs/synthetic-results.json"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
 }

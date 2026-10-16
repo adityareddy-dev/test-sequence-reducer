@@ -2,11 +2,49 @@
 
 A Playwright test passes alone and fails after other tests. This tool removes chunks of earlier tests, keeps their order, and saves an ordered witness, removing earlier tests when possible while preserving the target's original error.
 
-This is a feasibility spike. The included fixtures use Playwright Test and shared JSON file state, they do not launch a browser. No real application or independent developer's failing suite has been tested. There is no accuracy estimate or adoption claim.
+## Install
 
-## Run the synthetic checks
+Requires Node 22 or later and npm. The Playwright adapter has been tested with `@playwright/test@1.64.1`.
 
-Requires Node 22 or later and npm. Playwright Test is pinned to 1.64.1.
+The 0.1.0 release is prepared, npm publication is pending registry authorization. Install from GitHub in the meantime:
+
+```sh
+npm install --save-dev github:adityareddy-dev/test-sequence-reducer @playwright/test@1.64.1
+```
+
+Once 0.1.0 is published, the registry install is:
+
+```sh
+npm install --save-dev test-sequence-reducer@0.1.0 @playwright/test@1.64.1
+```
+
+Playwright belongs to your project, the reducer does not install it or download browsers.
+
+## Two-minute quickstart
+
+In an empty directory, run the GitHub install above, then:
+
+```sh
+npx test-sequence-reducer node_modules/test-sequence-reducer/examples/single.json
+```
+
+This runs a synthetic Playwright test that passes alone and fails after `single-polluter` sets a flag in shared JSON state. No browser, server or database is needed. The included reset clears that state before every probe. The original Windows spike took about 30 seconds for this case, installation and machine speed add time.
+
+Expect a final line with `"status":"reduced"`, `"witness":["single-polluter"]` and `"deletionMinimal":true`. Open `artifacts/example/report.json` for the full result. Its numbered directories retain reset receipts, commands, process output and reporter records for each probe. The output directory must be new, copy the example config and change `output` before another run.
+
+For your own suite, copy the config and replace its command, reset, titles and failure substring. Read the reset contract below before trusting the result.
+
+## What it does and does not prove
+
+The tool finds an ordered subsequence that preserves the target's original error after fresh resets. It requires the target alone to pass 3/3 times and the original prefix to fail 3/3 times, then confirms the final witness fails 5/5 and the target alone passes 5/5. A confirmed witness narrows down a sequence worth investigating. It does not establish unique causation or the globally shortest sequence.
+
+The feasibility spike used ten authored Playwright fixtures with shared JSON state. All ten declared expectations passed, five known witnesses were found and none of the five declared negative controls produced a claimed witness. Two witnesses left deletion-minimality unresolved. These are synthetic observations, not an accuracy estimate.
+
+No real application or independent developer's failing suite has been validated. The reducer checks the reset receipt, it cannot prove that your database, service or session was actually reset. It supports one spec file, one project, one worker and unique flat titles. Multi-file scheduling and parallel races remain unsupported. There is no adoption claim.
+
+## Run all synthetic checks from source
+
+Clone the repository and run these commands in its root. Playwright Test is pinned to 1.64.1.
 
 ```sh
 npm ci --ignore-scripts
